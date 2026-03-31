@@ -1,4 +1,5 @@
 from typing import List, Self
+from app.main import Animal, Herbivore, Carnivore
 
 
 class Animal:
