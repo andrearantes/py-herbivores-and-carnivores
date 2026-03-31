@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Self
 
 
 class Animal:
@@ -28,7 +28,7 @@ class Herbivore(Animal):
 
 class Carnivore(Animal):
     @staticmethod
-    def bite(self, herbivore: Herbivore) -> str:
+    def bite(self: Self, herbivore: Herbivore) -> str:
         if isinstance(herbivore, Herbivore) and herbivore.hidden is False:
             herbivore.health -= 50
         if herbivore.health <= 0:
