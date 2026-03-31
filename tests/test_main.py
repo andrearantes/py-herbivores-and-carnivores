@@ -5,7 +5,7 @@ import io
 
 from contextlib import redirect_stdout
 
-from app.main import Animale, Herbivori, Carnivoro
+from app.main import Animale, Herbivori, Carnivore
 
 
 def test_animal_class():
@@ -49,7 +49,7 @@ def test_animal_constructor():
     "class_,method",
     [
         (Herbivori, "hide"),
-        (Carnivoro, "bite"),
+        (Carnivore, "bite"),
     ],
 )
 def test_only_one_method_should_be_declared_in_each_of_children_classes(
@@ -68,7 +68,7 @@ def test_only_one_method_should_be_declared_in_each_of_children_classes(
 
 def test_carnivore_bite_not_hidden():
     Animale.alive = []
-    lion = Carnivoro("King Lion")
+    lion = Carnivore("King Lion")
     rabbit = Herbivori("Susan")
     lion.bite(rabbit)
     assert rabbit.health == 50, (
@@ -79,7 +79,7 @@ def test_carnivore_bite_not_hidden():
 
 def test_carnivore_bite_hidden():
     Animale.alive = []
-    lion = Carnivoro("King Lion")
+    lion = Carnivore("King Lion")
     rabbit = Herbivori("Susan")
     rabbit.hide()
     lion.bite(rabbit)
@@ -90,8 +90,8 @@ def test_carnivore_bite_hidden():
 
 def test_carnivore_bite_to_death():
     Animale.alive = []
-    lion = Carnivoro("King Lion")
-    pantera = Carnivoro("Bagira")
+    lion = Carnivore("King Lion")
+    pantera = Carnivore("Bagira")
     rabbit = Herbivori("Susan")
     lion.bite(rabbit)
     pantera.bite(rabbit)
@@ -101,8 +101,8 @@ def test_carnivore_bite_to_death():
 
 
 def test_carnivore_bite_carnivore():
-    lion = Carnivoro("Simba")
-    pantera = Carnivoro("Bagire")
+    lion = Carnivore("Simba")
+    pantera = Carnivore("Bagire")
     lion.bite(pantera)
     assert pantera.health == 100
 
@@ -123,8 +123,8 @@ def test_herbivore_hide():
 def test_print_animal_alive():
     Animale.alive = []
 
-    lion = Carnivoro("King Lion")
-    pantera = Carnivoro("Bagira")
+    lion = Carnivore("King Lion")
+    pantera = Carnivore("Bagira")
     rabbit = Herbivori("Susan")
 
     f = io.StringIO()
@@ -144,7 +144,7 @@ def test_print_animal_alive():
 
 def test_when_health_less_than_zero():
     Animale.alive = []
-    lion = Carnivoro("King Lion")
+    lion = Carnivore("King Lion")
     rabbit = Herbivori("Susan", 25)
     lion.bite(rabbit)
     assert len(Animale.alive) == 1, (

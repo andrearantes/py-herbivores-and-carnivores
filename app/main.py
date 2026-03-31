@@ -1,9 +1,8 @@
-from typing import List, Self
-from app.main import Animale, Herbivori, Carnivoro
+from typing import List, Any
 
 
-class Animale:
-    alive = List["Animal"] = []
+class Animal:
+    alive = List[Any] = []
 
     def __init__(
             self,
@@ -14,7 +13,7 @@ class Animale:
         self.health = health
         self.name = name
         self.hidden = hidden
-        Animale.alive.append(self)
+        Animal.alive.append(self)
 
     def __repr__(self) -> str:
         return (f"{{Name: {self.name},"
@@ -22,15 +21,14 @@ class Animale:
                 f" Hidden: {self.hidden}}}")
 
 
-class Herbivori(Animale):
+class Herbivore(Animal):
     def hide(self) -> None:
         self.hidden = not self.hidden
 
 
-class Carnivoro(Animale):
-    @staticmethod
-    def bite(self: Self, herbivore: Herbivori) -> str:
-        if isinstance(herbivore, Herbivori) and herbivore.hidden is False:
+class Carnivore(Animal):
+    def bite(self, herbivore: Herbivore) -> None:
+        if isinstance(herbivore, Herbivore) and herbivore.hidden is False:
             herbivore.health -= 50
         if herbivore.health <= 0:
-            Animale.alive.remove(herbivore)
+            Animal.alive.remove(herbivore)
