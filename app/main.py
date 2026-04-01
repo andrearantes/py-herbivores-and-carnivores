@@ -1,8 +1,5 @@
-from typing import List, Any
-
-
 class Animal:
-    alive = List[Any] = []
+    alive = ["Animal"]
 
     def __init__(
             self,
