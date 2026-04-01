@@ -138,3 +138,4 @@ def test_print_animal_alive():
         f"Output should equal to {output} when you print 'Animal.alive' with "
         f"three animals"
     )
+
