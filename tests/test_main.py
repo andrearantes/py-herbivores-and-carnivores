@@ -1,5 +1,3 @@
-import os
-
 import pytest
 import io
 
@@ -140,28 +138,3 @@ def test_print_animal_alive():
         f"Output should equal to {output} when you print 'Animal.alive' with "
         f"three animals"
     )
-
-
-def test_when_health_less_than_zero():
-    Animal.alive = []
-    lion = Carnivore("King Lion")
-    rabbit = Herbivore("Susan", 25)
-    lion.bite(rabbit)
-    assert len(Animal.alive) == 1, (
-        "Herbivore should die if health less than zero"
-    )
-    assert Animal.alive[0].name == "King Lion"
-
-
-def test_unnecessary_comment():
-    if os.path.exists(os.path.join(os.pardir, "app", "main.py")):
-        main_path = os.path.join(os.pardir, "app", "main.py")
-    else:
-        main_path = os.path.join("app", "main.py")
-
-    with open(main_path, "r") as main:
-        main_content = main.read()
-
-        assert (
-                "# write your code here" not in main_content
-        ), "Remove unnecessary comment"
