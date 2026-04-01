@@ -45,7 +45,7 @@ def test_animal_constructor():
     )
 
 
-@mark.parametrize(
+@pytest.mark.parametrize(
     "class_,method",
     [
         (Herbivore, "hide"),
