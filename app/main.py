@@ -1,5 +1,5 @@
 class Animal:
-    alive = ["Animal"]
+    alive = []
 
     def __init__(
             self,
